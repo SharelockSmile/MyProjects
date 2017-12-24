@@ -1,0 +1,27 @@
+#tbZq{
+    width:800px;
+    border-collapse:collapse;
+    margin-left:200px;
+}
+#tbZq tr td{
+    border:solid 1px black;
+    text-align:center;
+}
+
+#tr1{
+    height: 29px;
+    background-image:url("../Images/55.gif");
+    background-size:100% 100%;
+}
+.sp1{
+    background-color:whitesmoke;
+    display:block;
+    height:40px;
+    line-height:40px;
+}
+.sp2{
+    background-color:skyblue;
+    display:block;
+    height:30px;
+    line-height:30px;
+}

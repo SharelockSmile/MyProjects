@@ -1,0 +1,9 @@
+#tbArt{
+    width:800px;
+    border-collapse:collapse;
+    margin-left: 240px;
+}
+#tbArt tr td,#tbArt tr th{
+    border:solid 1px black;
+    text-align:center;
+}

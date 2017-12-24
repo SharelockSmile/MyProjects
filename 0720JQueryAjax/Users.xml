@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<usersInfo>
+  <user>
+     <uid>10000</uid>
+     <uname>张三</uname>
+  </user>
+  <user>
+     <uid>10001</uid>
+     <uname>李四</uname>
+  </user>
+    <user>
+     <uid>10002</uid>
+     <uname>王五</uname>
+  </user>
+</usersInfo>
