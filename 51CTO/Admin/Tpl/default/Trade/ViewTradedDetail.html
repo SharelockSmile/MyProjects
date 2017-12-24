@@ -1,0 +1,68 @@
+<style type="text/css">
+<!--
+BODY{
+    line-height:5mm;
+	font-size: 12px;
+}
+.table{
+	border-top-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-top-color: #222;
+	border-left-color: #222;
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 22px;
+	margin-bottom: 5px;
+}
+.table td{
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-right-color: #222;
+	border-bottom-color: #222;
+	text-align: center;
+}
+-->
+</style>
+<body bgcolor="#ccd9e8">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table">
+  <tr>
+  	<td>交易编号</td>
+    <td>货物类别</td>
+    <td>货物名称</td>
+    <td>货物售价</td>
+    <td>购买数量</td>
+    <td>应付现金(元)</td>
+  </tr>
+  <iterate name="list" id="vo">
+      <tr>
+      	<td>{$vo.trade_order}</td>
+        <td>{$vo.product_class}</td>
+        <td>{$vo.product_name}</td>
+        <td><font color="red">{$vo.product_sell_price}</font>元</td>
+        <td><font color="red">{$vo.sell_amount}</font>{$vo.product_danwei}</td>
+        <td><font color="red">{$vo['product_sell_price'],$vo['sell_amount']|TplMultiply}</font>元</td>
+      </tr>
+   </iterate>
+   <tr>
+   	<td colspan="6" style="text-align:left"> 
+    	交易状态：
+        <eq name="tradelist.type" value="sale"><font color="green"><b>折扣结算</b></font></eq>
+        <eq name="tradelist.type" value="all"><font color="blue"><b>全部结算</b></font></eq>
+        <eq name="tradelist.type" value="part"><font color="#FF6600"><b>部分结算</b></font></eq>
+        <eq name="tradelist.type" value="none"><font color="red"><b>未结算</b></font></eq>
+       ，应付金额：<font color="blue"><b>{$tradelist.original_price}</b></font>元
+       ，实付金额：<font color="green"><b>{$tradelist.actual_price|NullChange}</b></font>元
+       ，未付金额：<font color="red"><b>{$tradelist.leave_price|NullChange}</b></font>元
+    </td>
+   </tr>
+   <tr>
+   	<td colspan="6" style="text-align:right">
+    	交易日期：<b>{$tradelist.trade_date}</b>
+    </td>
+   </tr>
+</table>
+</body>

@@ -1,0 +1,241 @@
+<style type="text/css">
+<!--
+BODY{
+    line-height:5mm;
+	font-size: 12px;
+}
+.table{
+	border-top-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-top-color: #222;
+	border-left-color: #222;
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 22px;
+	margin-bottom: 5px;
+}
+.table td{
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-right-color: #222;
+	border-bottom-color: #222;
+	text-align: center;
+}
+.input{
+	background-color: #ccd9e8;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #000;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-left-width: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+}
+.box1
+{
+	width:   80px;
+	height: 18px;
+	clip: rect( 0px, 80px, 18px, 0px );
+	overflow: hidden;
+}
+.box2
+{
+	width:   100px;
+	height: 18px;
+	clip: rect( 0px, 100px, 18px, 0px );
+	overflow: hidden;
+}
+.select1
+{
+	width: 100px;
+	color: #333333;
+	border-style: none;
+	border-width: 0px;
+	font-size: 12px;
+	background-color: #ccd9e8;
+}
+img{
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;	
+}
+.a_hover{
+	margin-top: 2px;
+	margin-left: 2px;
+}
+-->
+</style>
+<body bgcolor="#ccd9e8">
+<script type="text/ecmascript" src="../Public/Ext/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	//$("img:last").attr("p","1");
+	var tradetype = $("#html_tradetype");
+	var extra_price = $("#html_extra_price");
+	var actual_price = $("#html_actual_price");
+	var static_actual_price = actual_price.val();
+	var extra_price_input = $("#html_extra_price_input");
+	extra_price.hide();
+	tradetype.change(function(){
+		type = $(this).val();
+		extra_price_input.attr("readonly",false);
+		actual_price.attr("readonly",false);
+		if(type == "part" || type == "sale" || type == "none"){
+			extra_price.show();	
+			if(type == "none"){
+				extra_price_input.val(static_actual_price);
+				extra_price_input.attr("readonly",true);
+				actual_price.attr("readonly",true);
+				actual_price.val(0);
+			}
+			else{
+				actual_price.val(static_actual_price);
+				extra_price_input.val(0);
+			}
+		}
+		else{
+			extra_price.hide();
+			actual_price.val(static_actual_price);
+			actual_price.attr("readonly",true);
+		}
+	});
+	actual_price.keyup(function(){
+		type = tradetype.val();
+		if(type == "part" || type == "sale"){
+			if(parseFloat(actual_price.val()) > parseFloat(static_actual_price)){
+				actual_price.val(static_actual_price);
+				extra_price_input.val(0);
+				alert("实付金额不能大于应付金额");	
+			}
+			else{
+				extra_price_input.val(static_actual_price - $(this).val());		
+			}
+		}							  
+	});
+	extra_price_input.keyup(function(){
+		type = tradetype.val();
+		if(type == "part" || type == "sale"){
+			if(parseFloat(extra_price_input.val()) > parseFloat(static_actual_price)){
+				actual_price.val(static_actual_price);
+				extra_price_input.val(0);
+				alert("未结算金额不能大于应付金额");		
+			}
+			else{
+				actual_price.val(static_actual_price - $(this).val());
+			}
+		}								 
+	});
+	$("#confirmtrade").click(function(){
+		if(confirm("您确认交易?")){
+			send_trade_order = $("tr:eq(1) td:eq(0)").text();
+			send_type = tradetype.val();
+			send_actual_price = actual_price.val();
+			send_extra_price = extra_price_input.val();
+			if(send_type == 'sale' || send_type == 'part'){
+				if(send_actual_price <= 0){
+					alert("实付金额不能为0");
+					return;
+				}
+				if(send_extra_price <= 0){
+					alert("未结算金额不能为0");
+					return;
+				}
+			}
+			$.post(
+				"/Goods/index.php/Trade/StoreTradeDetail",
+				{trade_order:send_trade_order,type:send_type,actual_price:send_actual_price,extra_price:send_extra_price},
+				function(data){
+					if(data)
+						window.location = "__TMPL__/Trade/TradeSuccess.html";
+					else
+						alert('交易失败！');
+				}
+			);
+		}
+	});
+	$("img").hover(
+		function(){
+			$(this).toggleClass("a_hover");	
+		},
+		function(){
+			$(this).toggleClass("a_hover");	
+		}
+	);
+	$("img").click(function(){
+		if(confirm("您确定要删除此项交易？")){
+			send_trade_order = $("tr:eq(1) td:eq(0)").text();
+			product_id = $(this).attr("alt");
+			sell_amount = $(this).attr("amount");
+			sell_price = $(this).attr("sell_price");
+			$.post(
+				"__APP__/Trade_have_product/RemoveByTradeOrderAndProductId",
+				{trade_order:send_trade_order,product_id:product_id,sell_amount:sell_amount,sell_price:sell_price},
+				function(data){
+					if(data)
+						window.location = "__APP__/Trade/ShowTradeDetail";
+					else
+						alert("删除失败！");
+				}
+			);
+		}
+	});
+});
+</script>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table">
+  <tr>
+  	<td>交易编号</td>
+    <td>货物类别</td>
+    <td>货物名称</td>
+    <td>货物售价</td>
+    <td>购买数量</td>
+    <td>应付现金(元)</td>
+    <td>操作</td>
+  </tr>
+  <iterate name="list" id="vo">
+      <tr>
+      	<td>{$vo.trade_order}</td>
+        <td>{$vo.product_class}</td>
+        <td>{$vo.product_name}</td>
+        <td><font color="red">{$vo.product_sell_price}</font>元</td>
+        <td><font color="red">{$vo.sell_amount}</font>{$vo.product_danwei}</td>
+        <td><font color="red">{$vo['product_sell_price'],$vo['sell_amount']|TplMultiply}</font>元</td>
+        <td><img src="__TMPL__/Public/Images/trade-delete2.gif" alt="{$vo.id}" amount="{$vo.sell_amount}" sell_price="{$vo.product_sell_price}"></td>
+      </tr>
+   </iterate>
+   <tr>
+   		<td colspan="7" style="text-align:left;padding:5px">本次交易总额：<font color="red"><b>{$original_price}</b></font>元，应付金额：<font color="red"><b>{$original_price}</b></font>元</td>
+   </tr>
+   <tr>
+   		<td colspan="7" style="text-align:left;padding:5px">交易状态：<span class="box1"><span class="box2">
+<select id="html_tradetype" class="select1">
+	<option value="all">全部结算</option>
+  <option value="part">部分结算</option>
+    <option value="sale">折扣结算</option>
+  <option value="none">未结算</option>
+</select>
+</span></span>
+，实付金额：<input id="html_actual_price" value="{$original_price}" class="input" size="9" readonly>元<span id="html_extra_price">，未结算金额：<input id="html_extra_price_input" value="" class="input" size="3">元</span>
+</td>
+   </tr>
+   <tr>
+   		<td colspan="7" style="text-align:left;padding:5px">交易日期：<b>{$trade_date}</b></td>
+   </tr>
+   <tr>
+   		<td colspan="7"><input type="button" value="确认交易" id="confirmtrade"></td>
+   </tr>
+</table>
+</body>

@@ -1,0 +1,30 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>创建单元</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="__PUBLIC__/fckeditor/fckeditor.js"></script> 
+        <script type="text/javascript">
+            function onloadFck(){
+                var fck = new FCKeditor('description');
+                fck.BasePath="__PUBLIC__/fckeditor/";
+                fck.Width="700";
+                fck.Heght="300";
+                fck.ReplaceTextarea();
+            }
+            window.onload=onloadFck;
+        </script>
+    </head>
+    <body>
+        <form action="__URL__/insert" method="post">
+            单元名称:<input type="text" name="name"/>
+            <br/>
+            单元描述:<textarea name="description"></textarea>
+            <input type="submit" value="提交"/>
+        </form>
+    </body>
+</html>

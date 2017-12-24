@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)http://banciyuan.com/register -->
+<html lang="zh"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>注册 半次元-基，是羁绊的绊。</title>
+        <script charset="utf-8" async="" src="./注册 半次元-基，是羁绊的绊。_files/log.js"></script><script type="text/javascript" async="" src="./注册 半次元-基，是羁绊的绊。_files/ga.js"></script><script>
+            var _UID_ = '0';
+            var _MID_ = '0';
+            var _APP_ = 'home';
+            //hack 部分需要使用到一级菜单的耳机标准的改变
+            var _HEADNAME_ = '';
+
+        </script>
+        <!-- 加载核心唯一样式表 -->
+        <link href="./注册 半次元-基，是羁绊的绊。_files/main.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="./注册 半次元-基，是羁绊的绊。_files/jquery.js"></script>
+        <!-- 核心JS加载 -->
+        <script type="text/javascript" src="./注册 半次元-基，是羁绊的绊。_files/common.js"></script>
+        <link rel="shortcut icon" href="http://banciyuan.com/Public/Image/favicon.ico">
+        <meta name="keywords" content="半次元 手办 模型 Cos 社区 偶像">
+        <meta name="description" content="半次元第一文化社区">
+        <!-- 弹出对话框插件 -->
+        <script type="text/javascript" src="./注册 半次元-基，是羁绊的绊。_files/box.js"></script>
+        <link href="http://banciyuan.com/Public/Plugin/tbox/box.css" rel="stylesheet">
+        <!-- 百毒广告 -->
+        <script type="text/javascript" src="./注册 半次元-基，是羁绊的绊。_files/m.js"></script>
+    </head>
+    <body class="body_bg">
+        <div class="div_body layout">
+            <div class="header_bg">
+                <div class="header">
+                    <!-- 头部 begin -->
+                    <div class="logo">
+                        <a href="http://banciyuan.com/Home/Index/index">&nbsp;</a>
+                    </div>
+                    <div class="nav_m">
+                        <div id="Home" class="">
+                            <a href="http://banciyuan.com/Home/Index/index" class="home" style="background-image: url(http://banciyuan.com/Public/Image/home_on.png); background-position: initial initial; background-repeat: no-repeat no-repeat; "></a>
+                        </div>
+                        <div id="Figure" class="">
+                            <a href="http://banciyuan.com/Figure/Index/index" class="figure"></a>
+                        </div>
+                        <div id="Idol" class="">
+                            <a href="http://banciyuan.com/Idol/Index/index" class="idol"></a>
+                        </div>
+                        <div id="Market" class="">
+                            <a href="http://banciyuan.com/Wiki/Sell/index" class="market"></a>
+                        </div>
+                    </div>
+                                        <div class="nav_sub">
+                            <a href="./注册 半次元-基，是羁绊的绊。_files/注册 半次元-基，是羁绊的绊。.htm">注册</a>&nbsp;|&nbsp; <a href="http://banciyuan.com/login">登录</a>
+                        </div>                    <div class="search_entrance">
+                        <form action="http://banciyuan.com/Home/User/searchuser" method="post">
+                            <input type="text" name="k" class="srch" maxlength="40" value="">
+                            <input class="serc_b hand" type="submit" value="">
+                        <input type="hidden" name="__hash__" value="066bc7a3e089fee6d92cef13f687bdcd"></form>
+                    </div>
+                </div><!-- END OF header -->
+            </div><!-- END OF header_bg -->
+            <!-- 		</div>
+            </div> -->
+            <script>
+                $(window).load(function(){
+                    $(".header_dropdown").hover(
+                    function(){ $(this).addClass("hover"); },
+                    function(){ $(this).removeClass("hover"); }
+                );
+                    //支持二级菜单的顶级化
+                    if (_HEADNAME_ != ""){
+                        $("."+_HEADNAME_).css('background','url(/Public/Image/'+_HEADNAME_+'_on.png) no-repeat');
+                    } else {
+                        //header选中页面导航栏变红
+                        $("."+_APP_).css('background','url(/Public/Image/'+_APP_+'_on.png) no-repeat');
+                    }
+                                            });
+            </script>
+            <hr>
+
+<script>
+    function changeverify(){
+        var date = new Date();
+        var ttime = date.getTime();
+        var url = "/Home/Public/verify";
+        $('#verifyimg').attr('src',url+'?'+ttime);
+    }
+</script>
+<!--表单验证-->
+<script type="text/javascript" src="./注册 半次元-基，是羁绊的绊。_files/jquery.form.js"></script>
+<script type="text/javascript" src="./注册 半次元-基，是羁绊的绊。_files/jquery.validator.reg.js"></script>
+
+<div class="content"><!-- 内容 begin  -->
+    <div class="main no_l">
+        <div class="mainbox">
+            <div class="mainbox_R">
+                <div style="padding:10px;">
+                    <p class="pb10">已有帐号？请直接登录</p>
+                    <p class="pb10 lineS_btm"><a href="http://banciyuan.com/Home/Public/login" class="N_but">登录</a></p>
+                </div>
+            </div>
+            <div class="mainbox_C">
+                <div class="reg_box">
+                    <div class="left" style="width:100%">
+                        <h2 class="cRed"><strong>快速注册</strong></h2>
+                    </div>
+
+                    <form action="http://banciyuan.com/Home/Public/doRegister" method="post" id="regform" name="reg">
+
+                        <ul class="form_list">
+                            <li class="form_li">
+                                <div class="reg_li_1">登录邮箱：</div>
+                                <div class="reg_li_2">
+                                    <input type="text" class="text35 left" style="width:250px;" value="" name="email" require="true" datatype="email|ajax" url="/Home/Public/isEmailAvailable" msg="请填有效邮箱地址，以完成注册|邮箱已被占用">
+                                    <div id="success_email" style="display:none;"> <span class="ico_cue_ok"></span> </div>
+                                </div>
+                                <div class="reg_li_3">
+
+                                    <div class="error_email" style="position: relative;display:none;"> <span class="ico_cue_no"></span><span id="error_email"></span> </div>
+                                </div>
+                            </li>
+                            <li class="form_li">
+                                <div class="reg_li_1">站内昵称：</div>
+                                <div class="reg_li_2">
+                                    <input type="text" class="text35 left" style="width:250px;" value="" name="nickname" min="3" max="10" maxlength="10" require="true" datatype="require|ajax" url="/Home/Public/isValidNickName" msg="重要！请填写用户名">
+                                    <div id="success_nickname" style="display:none;"><span class="ico_cue_ok"></span></div>
+                                </div>
+                                <div class="reg_li_3">
+
+                                    <div class="error_nickname" style="position: relative;display:none;"><span class="ico_cue_no"></span><span id="error_nickname"></span></div>
+                                </div>
+                            </li>
+                            <li class="form_li">
+                                <div class="reg_li_1">登录密码：</div>
+                                <div class="reg_li_2">
+                                    <input type="password" class="text35 left" style="width:250px;" name="password" id="password" require="true" value="" datatype="limit" min="6" max="16" msg="密码由6-16个字符组成">
+                                    <div id="success_password" style="display:none;"> <span class="ico_cue_ok"></span> </div>
+                                </div>
+                                <div class="reg_li_3">
+
+                                    <div class="error_password" style="position: relative;display:none;"> <span class="ico_cue_no"></span> <span id="error_password"></span> </div>
+                                </div>
+                            </li>
+                            <li class="form_li">
+                                <div class="reg_li_1">确认密码：</div>
+                                <div class="reg_li_2">
+                                    <input type="password" class="text35 left" style="width:250px;" name="repassword" require="true" value="" datatype="repeat|limit" min="6" max="16" to="password" msg="两次输入的密码须一样|密码由6-16个字符组成">
+                                    <div id="success_repassword" style="display:none;"> <span class="ico_cue_ok"></span> </div>
+                                </div>
+                                <div class="reg_li_3">
+                                    <div id="success_repassword" style="display:none;"> <span class="ico_cue_ok"></span> </div>
+                                    <div class="r error_repassword" style="position: relative;display:none;"> <span class="ico_cue_no"></span> <span id="error_repassword"></span> </div>
+                                </div>
+                            </li>
+                            <!--选填信息-->
+                            <div class="select_fillin"><p>以下为选填内容</p></div>
+                            <li class="form_li">
+                                <div class="reg_li_1">所在地：</div>
+                                <div class="reg_li_2">
+                                    <script>ui.getarea('area','',11,1);</script><select name="area_province" style="position: absolute; opacity: 0; font-size: 12px; "><option>省/直辖市</option><option value="1" rel="0">北京</option><option value="21" rel="1">天津</option><option value="41" rel="2">河北</option><option value="225" rel="3">山西</option><option value="356" rel="4">内蒙古</option><option value="471" rel="5">辽宁</option><option value="586" rel="6">吉林</option><option value="656" rel="7">黑龙江</option><option value="802" rel="8">上海</option><option value="823" rel="9">江苏</option><option value="943" rel="10">浙江</option><option value="1045" rel="11">安徽</option><option value="1168" rel="12">福建</option><option value="1263" rel="13">江西</option><option value="1374" rel="14">山东</option><option value="1532" rel="15">河南</option><option value="1709" rel="16">湖北</option><option value="1826" rel="17">湖南</option><option value="1963" rel="18">广东</option><option value="2106" rel="19">广西</option><option value="2230" rel="20">海南</option><option value="2257" rel="21">重庆市</option><option value="2299" rel="22">四川</option><option value="2502" rel="23">贵州</option><option value="2600" rel="24">云南</option><option value="2746" rel="25">西藏</option><option value="2827" rel="26">陕西</option><option value="2945" rel="27">甘肃</option><option value="3046" rel="28">青海</option><option value="3098" rel="29">宁夏</option><option value="3125" rel="30">新疆</option></select><span class="customStyleSelectBox" style="display: inline-block; "><span class="customStyleSelectBoxInner" style="width: 75px; display: inline-block; ">省/直辖市</span></span> <select name="area_city" style="position: absolute; opacity: 0; font-size: 12px; "><option value="0">不限</option></select><span class="customStyleSelectBox" style="display: inline-block; "><span class="customStyleSelectBoxInner" style="width: 75px; display: inline-block; ">不限</span></span>
+                                </div>
+                                <div class="reg_li_3">
+                                    <div id="success_area_province" style="display:none;">
+                                        <span><img src="./注册 半次元-基，是羁绊的绊。_files/fzcg_dh[1].gif"></span>
+                                    </div>
+                                    <div class="r error_area_province" style="position: relative;display:none;">
+                                        <div>
+                                            <span><img src="./注册 半次元-基，是羁绊的绊。_files/th_ju[1].gif"></span>
+                                            <div class="clue"><p id="error_area_province"></p><span class="clue_btm"></span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="form_li">
+                                <div class="reg_li_1">性别：</div>
+                                <div class="reg_li_2">
+                                    <label><input name="sex" type="radio" value="1" checked=""> 男</label> &nbsp;&nbsp;&nbsp;
+                                    <label><input name="sex" type="radio" value="0"> 女</label>
+                                </div>
+                                <div class="reg_li_3">
+                                    <div id="success_sex" style="display:none;">
+                                        <span><img src="./注册 半次元-基，是羁绊的绊。_files/fzcg_dh[1].gif"></span>
+                                    </div>
+                                    <div class="r error_sex" style="position: relative;display:none;">
+                                        <div>
+                                            <span><img src="./注册 半次元-基，是羁绊的绊。_files/th_ju[1].gif"></span>
+                                            <div class="clue"><p id="error_sex"></p><span class="clue_btm"></span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="form_li">
+                                <div class="reg_li_1">个人简介：</div>
+                                <div class="reg_li_2">
+                                    <textarea name="self_intro" rows="4" class="text35 self_intro"></textarea>
+                                    <br><p>个人简介在80个字之内</p>
+                                </div>
+                            </li>
+                            <div class="select_fillin"></div>
+
+                            <!--选填信息end-->
+
+
+                            <li class="form_li">
+                                <div class="reg_li_1">验证码：</div>
+                                <div class="reg_li_2" style="width:173px;">
+                                    <input type="text" class="text35 left" style="width:100px;" name="verify" require="true" value="" datatype="require" msg="验证码不能为空">
+                                    <a href="javascript:void(0);" onclick="changeverify()"><img src="./注册 半次元-基，是羁绊的绊。_files/verify" id="verifyimg" alt="换一张"></a>
+                                </div>
+                                <div id="success_verify" style="display:none;"> <span class="ico_cue_ok"></span> </div>
+
+                                <div class="reg_li_3 clear">
+
+                                    <div class="r error_verify" style="position: relative;display:none;"> <span class="ico_cue_no"></span> <span id="error_verify"></span> </div>
+                                </div>
+                            </li>
+                            <li class="form_li">
+                                <div class="reg_li_2" style="width:auto;">
+                                    <label><input name="remember" id="remember" type="checkbox" value="" require="true" datatype="require" msg="请确认同意用户协议">我已经阅读并同意<a target="_blank" href="http://banciyuan.com/Static/xieyi">《半次元用户协议》</a></label>
+
+                                </div>
+                                <div id="success_remember" style="display:none;"> <span class="ico_cue_ok"></span> </div>
+                                <div class="reg_li_3 clear">
+                                    <div class="r error_remember" style="position: relative;display:none;"> <span class="ico_cue_no"></span> <span id="error_remember">请确认同意用户协议</span> </div>
+                                </div>
+                            </li>
+
+                            <li class="form_li">
+                                <div class="reg_li_1">
+                                    <input type="hidden" name="HTTP_REFERER" value="http://banciyuan.com/start">                                    <input type="submit" class="btn_green_w121" value="创建帐号">
+                                </div>
+                                <div class="reg_li_2">&nbsp;</div>
+                            </li>
+                        </ul>
+                    <input type="hidden" name="__hash__" value="066bc7a3e089fee6d92cef13f687bdcd"></form>
+                </div>
+                <div class="c"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $('#remember').click(function(){
+            if($('#remember').attr("checked")=="checked"){
+                $('#remember').val("1");
+                $('#success_remember').css('display','block');
+                $('.error_remember').css('display','none');
+
+            }else{
+                $('#remember').val("");
+                $('#success_remember').css('display','none');
+               	$('.error_remember').css('display','block');
+            }
+        })
+    });
+
+    $(function() {
+        // replace the style of select box
+        $('select').customSelect();
+        //checkForm
+        $('#regform').checkForm();
+    });
+</script>
+
+<div class="footer_bg">
+    <hr>
+    <div class="footer">
+        <div>
+            <p class="leftl">© 2011－2012 banciyuan.com, all rights reserved</p>
+			<p class="gray fbase left" style="margin-top:3px; margin-left:128px;">京ICP备12025101号</p>
+            <p class="rightr"><a href="http://banciyuan.com/Static/committee">半次元制作委员会	</a></p>
+            <p class="rightr"><a href="http://banciyuan.com/Static/xieyi">半次用户协议</a></p>
+
+        </div>
+    </div><!-- END OF footer -->
+</div><!-- END OF footer_bg -->
+</div><!-- END OF div_body -->
+<!-- END OF body -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30528153-1']);
+  _gaq.push(['_setDomainName', 'banciyuan.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+ <div id="topcontrol" style="position: fixed; bottom: 60px; right: 151px; opacity: 0; cursor: pointer; " title="返回顶部"><a href="http://banciyuan.com/register#top" class="top_stick">&nbsp;</a></div></body></html>

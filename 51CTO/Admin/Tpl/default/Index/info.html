@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+<!--
+body{
+	font-family: "宋体";
+	font-size: 14px;	
+}
+
+#inforeload a{
+	font-family: "宋体";
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;	
+}
+
+#inforeload a:hover{
+	color: #FF9900;
+	text-decoration: none;	
+}
+-->
+</style>
+<script type="text/ecmascript" src="../Public/Ext/jquery.js"></script>
+<script type="text/javascript">
+function runClock(){
+	theTime = window.setTimeout("runClock()", 1000);
+	var today = new Date();
+	day = today.getDay();
+	if(day==0){var weekday = " 星期日";}
+	if(day==1){var weekday = " 星期一";}
+	if(day==2){var weekday = " 星期二";}
+	if(day==3){var weekday = " 星期三";}
+	if(day==4){var weekday = " 星期四";}
+	if(day==5){var weekday = " 星期五";}
+	if(day==6){var weekday = " 星期六";}
+	
+	var display= today.toLocaleString();
+	msg = "<b>当前时间:";
+	document.getElementById('clock').innerHTML=msg+display+weekday+'</b>';
+}
+$(document).ready(function() {
+ 
+	 
+});
+</script>
+</head>
+<body onLoad="runClock()" style="padding:10px">
+<p><b>您好，欢迎使用thinkphp+extjs开源CMS</b></p>
+<div id="clock"></div>
+<br>
+<div id="list"></div>
+<div id="inforeload"><p><a href="info.html">刷新此页面</a></p></div>
+</body>
+</html>

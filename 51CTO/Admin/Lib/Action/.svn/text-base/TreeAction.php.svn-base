@@ -1,0 +1,83 @@
+<?php
+
+class UserAction extends Action
+{
+
+    function index()
+    {
+
+        $user = mysql_real_escape_string('a');
+        $pwd = mysql_real_escape_string("' OR ''='");
+
+        $sql = "SELECT * FROM users WHERE
+user='" . $user . "' AND password='" . $pwd . "'";
+        echo $sql;
+        $user = new UserModel();
+
+        $keyword = $_POST['keyword'];
+        $type = $_POST['ftype'];
+        if (!empty($keyword) && !empty($type)) {
+            $where = $type . " like '%" . $keyword . "%'";
+        } else {
+
+        }
+        //                $list = $user->where($where)->select();
+        //                $list=$user->find(4);
+        $map = array('');
+        $list = $user->getField('email,id,username,password');
+        dump($list);
+        $this->assign('ulist', $list);
+        $this->display();
+    }
+
+
+    function insert()
+    {
+
+        header("Content-type:text/html;charset=utf-8");
+        $user = new UserModel();
+        if ($data = $user->create()) {
+            dump($data);
+            echo '测试';
+            if (false !== $user->add()) {
+
+                $uid = $user->getLastInsID();
+                echo "succe编号是" . $uid;
+            } else {
+                echo "fail" . $user->getDbError();
+            }
+        } else {
+            echo $user->getError();
+        }
+    }
+
+    function find()
+    {
+        $user = new UserModel();
+        $data = $user->select();
+        dump($data);
+    }
+
+    function edit()
+    {
+        $id = $_GET['id'];
+        if (!empty($id)) {
+            $user = new UserModel();
+            $user->create();
+        }
+        $this->display();
+    }
+
+    function update()
+    {
+        $user = new UserModel();
+        if ($data = $user->create()) {
+            if (!empty($data['id'])) {
+                //                    $opwd
+            }
+        }
+    }
+
+}
+
+?>

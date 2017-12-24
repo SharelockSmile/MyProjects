@@ -1,0 +1,190 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<script type="text/javascript">
+Ext.onReady(function(){
+
+    var Tree2 = Ext.tree;
+
+    var tree = new Tree2.TreePanel({
+        el:'tree-div',
+        autoScroll:true,
+        animate:true,
+        buttons: [{
+            text: '添加',
+	    disabled :false ,
+
+			handler:function(){
+				var id = 0;
+				var s = tree.getSelectionModel().getSelectedNode();
+				if (s) {
+					id = s.id;
+				}
+				Ext.get('pid').dom.value = id;
+				Ext.get('id').dom.value = '';
+				Ext.get('caption').dom.value = '';
+				Ext.get('notes').dom.value = '';
+				Ext.get('detzz').dom.value = '';
+				Ext.get('area').dom.value = '';
+			}
+        },{
+            text: '删除',
+			handler:function(){
+				var s = tree.getSelectionModel().getSelectedNode();
+				if (s) {
+					id = s.id;
+					Ext.Msg.confirm('确认', '真的要删除吗？', function(btn){
+						if (btn == 'yes'){
+							Ext.Ajax.request({
+							   url: '__URL__/delete/ids/'+id,
+							   success: function(result){
+									root.reload();
+									tree.expandAll();
+									}
+							});
+						}
+					});
+				}
+
+			}
+
+        }],
+        buttonAlign:'center',
+        enableDD:true,
+        containerScroll: true,
+        loader: new Tree2.TreeLoader({
+            dataUrl:'__URL__/tree'
+        })
+    });
+
+	tree.addListener('beforemove', function (treeobj,thisobj,oldp,newp) {
+		Ext.Ajax.request({
+			url: '__URL__/changeParent/id/'+thisobj.id+'/pid/'+newp.id+'/',
+			success: function(result){
+
+			}
+		});
+	});
+
+    // 设定权的第一个节点固化，保留。
+    var root = new Tree2.AsyncTreeNode({
+        text: '公司总结构',
+        draggable:false,
+        id:'0'
+    });
+    tree.setRootNode(root);
+
+    // render the tree
+    tree.render();//递补归
+    root.expand();//展开
+    tree.on('click',treeClick);
+    tree.expandAll();
+    function treeClick(node,e) {
+    	if (node.id!=0) {
+    		Ext.get('caption').dom.value = node.text;
+    		Ext.get('notes').dom.value = node.attributes.notes;
+    		Ext.get('pid').dom.value = node.attributes.pid;
+		Ext.get('detzz').dom.value = node.attributes.detzz;
+		Ext.get('area').dom.value = node.attributes.area;
+    		Ext.get('id').dom.value = node.id;
+    	}
+    }
+
+	Ext.QuickTips.init();
+
+    Ext.form.Field.prototype.msgTarget = 'side';
+     var top=new Ext.FormPanel({
+     	title:'部门信息',
+	labelWidth:100,
+        bodyStyle:'padding:2px 2px 0',
+		frame:true,
+		style:'margin:5',
+		defaults: {width: 200},
+		defaultType: 'textfield',
+        items: [{
+        	id:'caption',
+                fieldLabel: '部门名称',
+                allowBlank:false,
+                name: 'caption'
+            },{
+		xtype:'textarea',
+                fieldLabel: '简要说明',
+		allowBlank:false,
+                id:'notes',
+                name: 'notes'
+            },{
+		xtype:'textarea',
+                fieldLabel: '部门职责',
+		allowBlank:false,
+                id:'detzz',
+                name: 'detzz'
+            },{
+
+                fieldLabel: '分布地区',
+		allowBlank:false,
+                id:'area',
+                name: 'area'
+	    },{
+		xtype:"combo",
+		fieldLabel:"语言",
+		name:"Lang",
+
+		editable: false,
+		store: new Ext.data.SimpleStore({
+			fields: ["retrunValue", "displayText"],
+			data: [[1,'简体中文'],[2,'繁体中文'],[3,'ENGHLISH']]
+		}),
+		valueField :"retrunValue",
+		forceSelection: true,
+		displayField: "displayText",
+		mode: 'local',
+		triggerAction: 'all',
+		emptyText:"请选择"
+            },{
+				xtype:'hidden',
+				name: 'id',
+				id:'id',
+				value: ''
+			},{
+				xtype:'hidden',
+				name: 'pid',
+				id:'pid',
+				value: '0'
+			}],
+
+        buttons: [{
+            text: '保存',
+				handler:function(){
+					if(top.form.isValid()){
+						top.form.doAction('submit',{
+							 url:'__URL__/save',
+							 method:'post',
+							 params:'',
+							 success:function(form,action){
+							 	if (!Ext.get('id').dom.value) top.form.reset();
+							 	Ext.Msg.alert('操作','保存成功!');
+								root.reload();
+								tree.expandAll();
+							 },
+							 failure:function(){
+								Ext.Msg.alert('操作','服务器出现错误请稍后再试！');
+							 }
+                      });
+					}
+					}
+        },{
+            text: '重置',
+			handler:function(){top.form.reset();}
+        }]
+    });
+
+
+    top.render(document.getElementById('form-div'));
+
+    loadend();
+});
+</script>
+<div id="tree-div" style="overflow:auto; height:100%;width:200px;float:left;"></div>
+<div id="form-div" style="overflow:auto; height:100%;width:360px;float:left;"></div>
+<div id="tb_div"></div>
+
+<include file="../Public/footer" />

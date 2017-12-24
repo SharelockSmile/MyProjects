@@ -1,0 +1,72 @@
+<style type="text/css">
+<!--
+BODY{
+    line-height:5mm;
+	font-size: 12px;
+}
+.table{
+	border-top-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-top-color: #222;
+	border-left-color: #222;
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 22px;
+	margin-bottom: 5px;
+}
+.table td{
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-right-color: #222;
+	border-bottom-color: #222;
+	text-align: center;
+}
+-->
+</style>
+<body bgcolor="#ccd9e8">
+<font color="#CC3399" face="Verdana, Geneva, sans-serif"><b>{$total1.date}</b></font>销售统计(<font color="red">单位:元</font>),如下表：
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table">
+  <tr>
+  	<td>原始销售总额</td>
+    <td>实际销售总额</td>
+    <td>进价总额</td>
+    <td>含税总额</td>
+    <td>折扣总额</td>
+    <td>未结算总额</td>
+    <td>利润总额</td>
+  </tr>
+    <td><font color="blue"><b>{$total1.original_price}<b></font></td>
+    <td><font color="#990000"><b>{$total1.actual_price}</b></font></td>
+    <td><font color="#CC00FF"><b>{$total1.purchasing_price}</b></font></td>
+    <td><font color="#996666"><b>{$total1.tax}</b></font></td>
+    <td><font color="green"><b>{$total1.sale_price}</b></font></td>
+    <td><font color="red"><b>{$total1.none_price}</b></font></td>
+    <td><b>{$total1.profits}</b></td>
+  </tr>
+</table>
+<font color="#CC3399" face="Verdana, Geneva, sans-serif"><b>{$total2.date}</b></font>销售统计(<font color="red">单位:元</font>),如下表：
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table">
+  <tr>
+  	<td>原始销售总额</td>
+    <td>实际销售总额</td>
+    <td>进价总额</td>
+    <td>含税总额</td>
+    <td>折扣总额</td>
+    <td>未结算总额</td>
+    <td>利润总额</td>
+  </tr>
+    <td><font color="blue"><b>{$total2.original_price}<b></font></td>
+    <td><font color="#990000"><b>{$total2.actual_price}</b></font></td>
+    <td><font color="#CC00FF"><b>{$total2.purchasing_price}</b></font></td>
+    <td><font color="#996666"><b>{$total2.tax}</b></font></td>
+    <td><font color="green"><b>{$total2.sale_price}</b></font></td>
+    <td><font color="red"><b>{$total2.none_price}</b></font></td>
+    <td><b>{$total2.profits}</b></td>
+  </tr>
+</table>
+<font color="red">利润总额不包含未结算总额及折扣总额</font>
+</body>

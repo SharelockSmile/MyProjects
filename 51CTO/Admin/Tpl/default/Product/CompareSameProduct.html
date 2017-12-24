@@ -1,0 +1,55 @@
+<style type="text/css">
+<!--
+BODY{
+    line-height:5mm;
+	font-size: 12px;
+}
+.table{
+	border-top-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-top-color: #222;
+	border-left-color: #222;
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 22px;
+	margin-bottom: 5px;
+}
+.table td{
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-right-color: #222;
+	border-bottom-color: #222;
+	text-align: center;
+}
+-->
+</style>
+<body bgcolor="#ccd9e8">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table">
+  <tr>
+    <td>货物类别</td>
+    <td>货物名称</td>
+    <td>货物税额</td>
+    <td>货物进价</td>
+    <td>货物售价</td>
+    <td>货物剩余数量</td>
+    <td>进货日期</td>
+    <td>已售出数量</td>
+  </tr>
+  <iterate name="list" id="vo">
+      <tr>
+        <td>{$vo.product_class}</td>
+        <td>{$vo.product_name}</td>
+        <td><font color="red">{$vo.product_tax}</font>元</td>
+        <td><font color="red">{$vo.product_purchasing_price}</font>元</td>
+        <td><font color="red">{$vo.product_sell_price}</font>元</td>
+        <td>{$vo.product_amount}{$vo.product_danwei}</td>
+        <td>{$vo.product_updatetime}</td>
+        <td><font color="red">{$vo.sellamount}</font>{$vo.product_danwei}</td>
+      </tr>
+   </iterate>
+</table>
+</body>

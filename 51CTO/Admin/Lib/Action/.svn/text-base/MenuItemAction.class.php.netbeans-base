@@ -1,0 +1,45 @@
+<?php
+
+class MenuItemAction extends Action {
+
+    function index() {
+        
+    }
+
+    function add() {
+        $menuitem = new MenuItemModel();
+        $list = $menuitem->field("id,name,pid,path,concat(path,'-',id)as bpath")->order('bpath,id')->where('menuid=1')->select();
+        foreach ($list as $key => $value) {
+            $list[$key]['signnum'] = count(explode('-', $value['bpath'])) - 1;
+            $list[$key]['marginnum'] = (count(explode('-', $value['bpath'])) - 1) * 20;
+        }
+
+        $this->assign('mlist', $list);
+        $this->display();
+    }
+
+    function insert() {
+        $menuitem = new MenuItemModel();
+        $data = $menuitem->create();
+        dump($data);
+        $menuitem->add();
+        $this->success('添加成功');
+    }
+
+    function component() {
+        $comid = $_GET['comid'];
+        $com = new Model('Component');
+        if (!empty($comid)) {
+            $data = $com->getById($comid);
+            $this->redirect(__APP__ . '/' . $data['link'] . '/helper');
+        } else {
+
+            $list = $com->where('enabled=1')->select();
+            $this->assign('comlist', $list);
+            $this->display();
+        }
+    }
+
+}
+
+?>

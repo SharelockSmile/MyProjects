@@ -1,0 +1,22 @@
+<style type="text/css">
+<!--
+BODY{
+    line-height:5mm;
+	font-size: 12px;
+}
+-->
+</style>
+<body bgcolor="#ccd9e8">
+<font color="red">货物类别</font>：<font color=#FF9900><b>{$product_class}</b></font><br>
+<font color="red">货物单位</font>：<font color=blue><b>{$product_danwei}</b></font><br>
+货物型号：<b>{$product_modelnumber}</b><br>
+货物规格：<b>{$product_standard}</b><br>
+<font color="red">货物名称</font>：<b>{$product_name}</b><br>
+货物描述：{$product_description}<br>
+货物税额：<font color="green"><b>{$product_tax}元</b></font><br>
+<font color="red">货物进价</font>：<font color=green><b>{$product_purchasing_price}元</b></font><br>
+<font color="red">货物售价</font>：<font color=green><b>{$product_sell_price}元</b></font><br>
+<font color="red">货物数量</font>：<font color=green><b>{$product_amount}{$product_danwei}</b></font><br>
+<font color="red">进货日期</font>：<b>{$product_updatetime}</b><br>
+货物图片：<if condition="$product_image neq ''"><br><img src="__TMPL__/UploadFile/{$product_image}" width="80" height="60" alt="{$product_name}"/>&nbsp;&nbsp;<a href="__TMPL__/UploadFile/{$product_image}" target="_blank">点击查看大图</a><else/>暂无图片</if>
+</body>

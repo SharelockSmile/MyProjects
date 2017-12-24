@@ -1,0 +1,36 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <div>添加菜单项</div>
+        <form action="__URL__/insert" method="post">
+            菜单项名称:<input name="name" type="text" value=""/>
+            <br>
+            <select size="20" name="pid">
+            <option value="0" selected="selected">顶层菜单</option>
+            
+                <volist name="mlist" id ="row">
+                    <option value="{$row['id']}">
+                <php>
+                    for($i=0;$i<$row['marginnum']/5;$i++){
+                    echo "&nbsp;";
+                    }
+                </php>
+           
+                {$row['name']}
+                 </option>
+            </volist>
+        </select>
+            <input type="hidden" name="menuid" value="1">
+            <input type="submit" value="提交"/>
+        </form>
+        
+    </body>
+</html>

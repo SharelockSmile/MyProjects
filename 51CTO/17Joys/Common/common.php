@@ -1,0 +1,17 @@
+<?php
+ 
+function parseParams($params){
+	$p=explode("\n",$params);
+	$r=array();
+	foreach ($p as $v){
+		$tmp=explode('=',$v);
+		$r[$tmp[0]]=$tmp[1];
+	}
+	return $r;
+}
+function parseLink($link,$itemid=0){
+	$l=explode("/",$link);
+	$url=$l[1]."/".$l[4]."-".$itemid;
+	return $url;
+}
+?>

@@ -1,0 +1,7 @@
+<?php
+class MenuWidget extends Widget {
+    function render(){
+        return "<font > 22222</font>";
+    }
+}
+?>

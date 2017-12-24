@@ -1,0 +1,27 @@
+<?php
+return array (
+  0 => 'id',
+  1 => 'title',
+  2 => 'alias',
+  3 => 'title_alias',
+  4 => 'introtext',
+  5 => 'published',
+  6 => 'sectionid',
+  7 => 'catid',
+  8 => 'created',
+  9 => 'created_by',
+  10 => 'modifiled',
+  11 => 'modifiled_by',
+  12 => 'publish_up',
+  13 => 'publish_down',
+  14 => 'order',
+  15 => 'access',
+  16 => 'metakey',
+  17 => 'metadesc',
+  18 => 'hits',
+  19 => 'metadata',
+  20 => 'params',
+  '_autoinc' => true,
+  '_pk' => 'id',
+);
+?>

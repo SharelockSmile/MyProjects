@@ -1,0 +1,3 @@
+<?php if (!defined('THINK_PATH')) exit();?><ul id="menu-top" class="lava_no_image">
+	<?php if(is_array($milist)): $i = 0; $__LIST__ = $milist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$row): ++$i;$mod = ($i % 2 )?><?php if(($row['signnum'])  ==  "1"): ?><li><a href="<?php echo U(parseLink($row['link'],$row['id']));?>"><?php echo ($row['name']); ?></a></li><?php endif; ?><?php endforeach; endif; else: echo "" ;endif; ?>
+</ul>

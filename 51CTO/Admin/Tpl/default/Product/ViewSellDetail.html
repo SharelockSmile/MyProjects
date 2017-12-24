@@ -1,0 +1,74 @@
+<style type="text/css">
+<!--
+BODY{
+    line-height:5mm;
+	font-size: 12px;
+}
+.table{
+	border-top-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-top-color: #222;
+	border-left-color: #222;
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 22px;
+	margin-bottom: 5px;
+}
+.table td{
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-right-color: #222;
+	border-bottom-color: #222;
+	text-align: center;
+}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="__TMPL__/Public/Css/style.css" />
+<body bgcolor="#ccd9e8">
+<!--本产品目前已销售<font color="red"><b>{$sellamount}</b></font>台.原始销售总额是<font color="#FF00FF"><b>{$original_price}</b></font>元,实际销售总额是<font color="#990000"><b>{$actual_price}</b></font>元,其中折扣金额总共有<font color="green"><b>{$discount_price}</b></font>元,未结算金额总共有<font color="red"><b>{$debt_price}</b></font>元.-->
+若应付金额<font color="red">大于</font>货物售价，则可能是该订单包含多个产品销售记录，您可以复制交易编号，在'账目管理'下的'销售清单'中进行详细查询.
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table">
+  <tr>
+  	<td>交易编号</td>
+    <td>交易状态</td>
+    <td>交易数量</td>
+    <td>应付金额</td>
+    <td>实付金额</td>
+    <td>未付金额<br>(折扣金额)</td>
+    <td>交易日期</td>
+  </tr>
+  <iterate name="list" id="vo">
+      <tr>
+      	<td><b>{$vo.trade_order}</b></td>
+        <td>
+        <eq name="vo.type" value="sale"><font color="green"><b>折扣结算</b></font></eq>
+        <eq name="vo.type" value="all"><font color="blue"><b>全部结算</b></font></eq>
+        <eq name="vo.type" value="part"><font color="#FF6600"><b>部分结算</b></font></eq>
+        <eq name="vo.type" value="none"><font color="red"><b>未结算</b></font></eq>
+        </td>
+        <td>{$vo.sell_amount}{$danwei}</td>
+        <td>{$vo.original_price}元</td>
+        <td><if condition="$vo.actual_price eq ''">0<else/>{$vo.actual_price}</if>元</td>
+        <td>
+        	<if condition="$vo.leave_price eq ''">0<else/>
+            	<if condition="$vo.type eq 'part'"><font color="#FF6600"><b>
+                <elseif condition="$vo.type eq 'sale'"/><font color="green"><b>
+                <else/><font color="red"><b>
+                </if>
+            {$vo.leave_price}</b></font>
+            </if>元
+         </td>
+        <td>{$vo.trade_date}</td>
+      </tr>
+  </iterate>
+</table>
+<gt name="totalcount" value="5">
+<div class="pages_btns">
+		<div class="pages"><em>全部{$totalcount}条</em>{$page}</div>
+</div>
+</gt>
+</body>

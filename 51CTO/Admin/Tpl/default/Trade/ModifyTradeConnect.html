@@ -1,0 +1,93 @@
+﻿<style type="text/css">
+<!--
+body{
+	font-family: "宋体";
+	font-size: 14px;	
+}
+.table{
+	border-top-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-top-color: #222;
+	border-left-color: #222;
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 22px;
+	margin-bottom: 5px;
+}
+.table td{
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-right-color: #222;
+	border-bottom-color: #222;
+}
+.input{
+	background-color: #ccd9e8;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #000;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-left-width: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+}
+
+-->
+</style>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/ecmascript" src="../Public/Ext/jquery.js"></script>
+<script type="text/javascript">
+	function onSave(){
+		form = $(":input");
+		name = form.get(0).value;
+		address = form.get(1).value;
+		phone = form.get(2).value;
+		remarks = form.get(3).value;
+		trade_order = form.get(4).value;
+		$.post(
+			'__APP__/Trade_connect/Modify/',
+			{trade_order:trade_order,con_name:name,con_address:address,con_phone:phone,con_remarks:remarks},
+			function(data){
+				if(data){
+					window.location = "__TMPL__/Trade/StoreSuccess.html";	
+				}	
+				else{
+					alert('保存失败！');	
+				}
+			}
+		);
+	}
+</script>
+<body bgcolor="#ccd9e8">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table">
+  <tr>
+    <td width="40%" align="right">联系人：</td>
+    <td><input name='con_name' value="{$list.con_name}" class="input" size="16"></td>
+  </tr>
+  <tr>
+    <td align="right">地址：</td>
+    <td><input name='con_address' value="{$list.con_address}" class="input" size="16"></td>
+  </tr>
+  <tr>
+    <td align="right">联系电话：</td>
+    <td><input name='con_phone' value="{$list.con_phone}" class="input" size="16"></td>
+  </tr>
+  <tr>
+    <td align="right">备注：</td>
+    <td><input name='con_remarks' value="{$list.con_remarks}" class="input" size="16"><input type="hidden" value="{$list.con_trade_order}"></td>
+  </tr>
+  <tr>
+  	<td colspan="2" align="center"><input type="button" value="保存" onClick="onSave()"></td>
+  </tr>
+</table>
+
+</body>

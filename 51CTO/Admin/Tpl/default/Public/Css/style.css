@@ -1,0 +1,16 @@
+.pages_btns { width: 100%; padding: 0 0 8px; overflow: hidden;}
+.postbtn, .replybtn { float: right; }
+.postbtn { margin-left: 10px; cursor: pointer; }
+.pages_btns .pages em {line-height: 26px;background-color:#9C3;font-family: "ËÎÌו";font-size: 12px;font-weight: normal;font-style: normal;}
+.pages, .threadflow { float: right; border: 1px solid #99F; background: #F7F7F7; height: 24px; line-height: 26px; color: #999; overflow: hidden; }
+.pages a, .pages strong, .pages em, .pages kbd, #multipage{float: left;padding: 0 8px;line-height:26px;
+background-color:#9C3;text-decoration: none;font-weight: bold;color: #000;}
+.pages a:hover {background-color: #FFC;text-decoration: none;}
+.pages strong { font-weight: bold; color: #090; background: #CAD9EA; }
+.pages a.prev, .pages a.next { line-height: 24px; font-family: Verdana, Arial, Helvetica, sans-serif; }
+.pages a.next { padding: 0 7px; }
+.pages kbd { border-left: 1px solid #CAD9EA; margin: 0; }
+* html .pages kbd { padding: 1px 8px; }
+.pages kbd input { border: 1px solid #CAD9EA; margin-top: 3px !important; * > margin-top: 1px  !important; margin: 1px 4px 0 3px; padding: 0 2px; height: 17px; }
+.pages kbd>input { margin-bottom: 2px; }
+.threadflow { margin-right: 5px; padding: 0 5px; }

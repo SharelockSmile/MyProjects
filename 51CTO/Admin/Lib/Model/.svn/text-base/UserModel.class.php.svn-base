@@ -1,0 +1,59 @@
+<?php
+
+class UserModel extends Model {
+
+    //表单的数据验证
+    protected $_validate = array(
+        array('username', 'require', '用户名必须填写', 1, 'regex', 3),
+        array('username','require','用户名已经存在',1,'unique',1),
+        array('pwd', 'md5', '密码必须填写', 1, 'function'),
+        array('name','require','昵称必须存在',1),
+        array('email','require','邮箱必须存在'),
+        array('email','email','邮箱格式不正确'),
+        //array('last_login_date', 'getDate', 1, 'callback'),
+        array('email', 'checkEmail', '邮箱已经存在', 1, 'callback', 3),
+        array('active',array(0,1),'注意数据，启用：1； 停用：0',1,'in')
+    );
+
+
+
+    /*
+     * 字段映射
+     */
+    protected $_map = array(
+        'pwd' => 'password'
+    );
+    /*
+     * 自动完成
+     */
+    protected $_auto = array(
+        //array(填充字段,填充内容,填充条件,附加规则)
+        array('password', 'md5', 1, 'function'),
+        array('reg_date', 'getDate', 1, 'callback'),
+            //array('active','1'),
+    );
+
+    function getDate() {
+        return date('Y-m-d H:i:s');
+    }
+
+    function checkEmail() {
+        $user = new Model('User');
+        if (!empty($_POST['id'])) {
+            if ($user->getByEmail($_POST['email'])) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            if ($user->where("id!={$_POST['id']} and email='{$_POST['email']}'")->find()) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+
+}
+
+?>

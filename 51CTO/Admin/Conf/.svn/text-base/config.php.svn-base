@@ -1,0 +1,19 @@
+<?php
+
+$config = require './config.inc.php';
+$array = array(
+    //'配置项'=>'配置值' 
+    'DB_TYPE' => 'mysql',
+    'USER_AUTH_ON' => true,
+    'USER_AUTH_TYPE'=>1,
+    'USER_AUTH_KEY'=>'authId',
+    'ADMIN_AUTH_MODEL'=>'User',
+    'USER_AUTH_GATEWAY'=>'/Public/login',
+    'NOT_AUTH_MODEL'=>'Public',
+    'RBAC_ROLE_TABLE' => 'joys_role',
+    'RBAC_USER_TABLE' => 'joys_role_user',
+    'RBAC_ACCESS_TABLE' => 'joys_access',
+    'RBAC_NODE_TABLE' => 'joys_node',
+);
+return array_merge($config, $array);
+?>

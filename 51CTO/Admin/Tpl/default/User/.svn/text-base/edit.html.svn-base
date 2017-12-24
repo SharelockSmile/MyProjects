@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form action="__URL__/insert" method="post">
+用户名:<input type="text" name="username"/><br/>
+
+昵称:<input type="text" name="name"/><br/>
+
+密码:<input type="password" name="password"/><br/>
+邮箱:<input type="text" name="email"/><br/>
+激活:<input type="radio" name="active"/ value="1" checked="checked">
+<input type="radio" name="active"/ value="o"><br/>
+<br/>
+<input type="submit" value="保存" />
+</form>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * Description of MenuItemModel
+ *
+ * @author laoyin
+ */
+class MenuItemModel extends Model{
+    protected $_validate=array(
+        array('name','require','菜单名称必须填写！',1)
+    );
+    protected $_auto=array(
+        array('path','getPath',3,'callback')
+    );
+    function getPath(){
+        $pid=$_POST['pid'];
+        $pm=$this->field('id,path')->getById($pid);
+        $path=$pid!=0?$pm['path'].'-'.$pm['id']:0;
+        return $path;
+    }
+}
+
+?>

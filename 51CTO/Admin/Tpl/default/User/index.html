@@ -1,0 +1,20 @@
+
+<form name="form" id="form" action="__URL__/index" method="post">
+    筛选：<input type="text" name="keyword" />
+    <select name="ftype">
+        <option value="username">会员名</option>
+        <option value="name">昵称</option>
+        <option value="id">编号</option>
+    </select>
+    <input type="submit" value="查询" />
+</form>
+<table border="1px">
+<volist name="ulist" id="user" key="k">   
+    <tr>
+        <td>{$user['username']}</td>
+        <td>{$user['username']}</td>
+        <td>{$user['username']}</td>
+    </tr>
+</volist>
+</table>
+</form>
