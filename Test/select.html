@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<select id="select" onfocus="selectFocus()">
+    <option onclick="selectClick()">1</option>
+    <option onclick="selectClick()">2</option>
+    <option onclick="selectClick()">3</option>
+    <option onclick="selectClick()">4</option>
+    <option onclick="selectClick()">5</option>
+    <option onclick="selectClick()">1</option>
+    <option onclick="selectClick()">2</option>
+    <option onclick="selectClick()">3</option>
+    <option onclick="selectClick()">4</option>
+    <option onclick="selectClick()">5</option>
+</select>
+
+<script type="text/javascript">
+    function selectFocus(){
+        document.getElementById("select").setAttribute("size","5");
+    }
+    function selectClick(){
+        document.getElementById("select").removeAttribute("size");
+        document.getElementById("select").blur();
+        this.setAttribute("selected","");
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用户登录</title>
+<script language="JavaScript" type="text/javascript" src="js/jquery.js"></script>
+
+<script language="JavaScript">
+    function send()
+    {
+        $.ajax({
+            url:"sendCode.php",
+            type:"get",
+            datatype:"text",
+            data:{
+                "tel":scms_gettel.value
+            },
+            success:function(data)
+            {
+            alert("ok");
+            }
+        });
+        //location.href="yz_send.php?tel="+scms_gettel.value;
+    }
+</script>
+</head>
+<body>
+<h1 align="center">欢迎进入！</h1>
+<form id="feedbackform" name="feedbackform" action="checkCode.php" method="post" >
+    <table  border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC" style="margin-top:50px;">
+        <tr>
+            <td  height="45" bgcolor="#FAFAFA" style="padding-left:10px;">请输入您的手机号码：</td>
+            <td  height="45" bgcolor="#FAFAFA" style="padding-left:10px;"><input name="tel" id="scms_gettel" class="number" type="text" value="" />
+                <input name="right_yzcode" id="right_yzcode" type="hidden" value="" />              
+                <input name="Submitbfs" type="button" value="获取验证码" class="btn submit" id="Submitbfs" onclick="send()" style="height:28px;"/></td>
+        </tr>
+        <tr>
+            <td height="45" bgcolor="#FAFAFA" style="padding-left:10px;">输入您的验证码：</td>
+            <td height="45" bgcolor="#FAFAFA" style="padding-left:10px;">
+                <input type="text" name="yzm" id="scms_yzcode" class="number" value="" maxlength="6"  style="float:left" />
+                <div id="show_statu" style=" float:left;font-size:12px; text-align:left; border:1px solid #FFCC00; line-height:25px; background:#FFFFCC; color:#333333; display:none; height:25px; padding-left:10px; margin-left:8px;">
+                </div></td>
+        </tr>
+        <tr align="center">
+            <td colspan="2" ><input type="submit" name="sub" value="确认"/></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
