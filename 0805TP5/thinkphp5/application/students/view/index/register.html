@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        table{
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript" src="__STATIC__/JS/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="__STATIC__/JS/processReg.js"></script>
+    <title>Register</title>
+</head>
+<body>
+<!--<form action="{:url('processReg')}" method="get">-->
+<form action= method="get">
+    <table align="center">
+        <tr><th colspan="2"><h2>注册信息表</h2></th></tr>
+        <tr>
+            <td>姓名：</td>
+            <td><input type="text" name="pname" id="pname"><span id="showResult"></span></td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td><input type="password" name="pwd"></td>
+        </tr>
+        <tr>
+            <td>性别：</td>
+            <td>
+                <input type="radio" name="pSex[]" value="1">保密
+                <input type="radio" name="pSex[]" value="2" checked>男
+                <input type="radio" name="pSex[]" value="3">女
+            </td>
+        </tr>
+        <tr>
+            <td>年龄：</td>
+            <td><input type="text" name="pAge"></td>
+        </tr>
+        <tr>
+            <td>民族：</td>
+            <td><select name="selNation">
+                {volist name="nationIhfo" id="nation"}
+                <option value="{$nation.nid}">{$nation.nname}</option>
+                {/volist}
+            </select></td>
+        </tr>
+        <tr>
+            <td>爱好：</td>
+            <td>
+                <input type="checkbox" name="hobbies[]" value="音乐">音乐
+                <input type="checkbox" name="hobbies[]" value="舞蹈">舞蹈
+                <input type="checkbox" name="hobbies[]" value="绘画">绘画
+                <input type="checkbox" name="hobbies[]" value="诗词">诗词
+                <input type="checkbox" name="hobbies[]" value="篮球">篮球
+            </td>
+        </tr>
+        <tr><td colspan="2">
+            <input type="submit" value="确认注册" >
+        </td></tr>
+    </table>
+</form>
+</body>
+</html>

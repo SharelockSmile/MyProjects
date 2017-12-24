@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        table{
+            text-align: center;
+            width: 80%;
+            border-collapse: collapse;
+        }
+        table th{
+            background-color: #b5877d;
+        }
+        table th,table tr td{
+            border: 1px solid brown;
+        }
+    </style>
+    <title>StudentInfo</title>
+</head>
+<body>
+<form>
+    欢迎【{$Request.session.name}】！
+    <table align="center">
+        <tr><th colspan="7">学生信息表</th></tr>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>爱好</th>
+            <th>Alert</th>
+            <th>Delect</th>
+        </tr>
+        {volist name="students" id="row"}
+            <tr>
+                <td>{$row.pno}</td>
+                <td>{$row.pname}</td>
+                <td>{$row["pAge"]}</td>
+                <td>{$row["pSex"]}</td>
+                <td>{$row["hobbies"]}</td>
+                <td><a href="{:url('alertInfo',['sId'=>$row['pno']])}">Alert</a></td>
+                <td><a href="#">Delect</a></td>
+            </tr>
+        {/volist}
+    </table>
+</form>
+{$showPage}
+</body>
+</html>

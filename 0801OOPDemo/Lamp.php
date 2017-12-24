@@ -1,0 +1,5 @@
+<?php
+class Lamp extends Light{
+	//ÀàµÄ¼Ì³Ð
+}
+

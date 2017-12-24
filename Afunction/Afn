@@ -1,0 +1,166 @@
+<?php
+function printArr($arr)
+{
+    echo "<pre>";
+    print_r($arr);
+    echo "</pre>";
+}
+/*//array_change_key_case将数组中的键名全部改成大写（CASE_UPPER/1）小写（CASE_LOWER/0）,默认是小写
+$a=array("FirSt" => 1, "SecOnd" => 4);
+$b=array_change_key_case($a);
+echo "<pre>";
+print_r($b);
+echo "</pre>";*/
+
+/*//array_chunk将一个数组分割成多个数组，每个数组的长度取决于SIZE,若第三个参数为true，则保留原标号，若为false，则不保留，每个新分的数组重新标号，默认为false
+$a=array("a","b","c","d","e","f","g");
+$b=array_chunk($a,3,true);
+echo "<pre>";
+print_r($b);
+echo "</pre>";*/
+
+/*//array_column将数组中的一列返回
+$records = array(
+    array(
+        'id' => 2135,
+        'first_name' => 'John',
+        'last_name' => 'Doe',
+    ),
+    array(
+        'id' => 3245,
+        'first_name' => 'Sally',
+        'last_name' => 'Smith',
+    ),
+    array(
+        'id' => 5342,
+        'first_name' => 'Jane',
+        'last_name' => 'Jones',
+    ),
+    array(
+        'id' => 5623,
+        'first_name' => 'Peter',
+        'last_name' => 'Doe',
+    )
+);
+$first_names = array_column($records, 'first_name');
+echo "<pre>";
+print_r($first_names );
+echo "</pre>";*/
+
+/*//array_combine ( array $keys , array $values 返回一个 array，用来自 keys 数组的值作为键名，来自 values 数组的值作为相应的值。
+$a = array('green', 'red', 'yellow');
+$b = array('avocado', 'apple', 'banana');
+$c = array_combine($a, $b);
+echo "<pre>";
+print_r($c);
+echo "</pre>";*/
+
+/*//array_count_values ( array $input )返回一个数组，该数组用 input 数组中的值作为键名，该值在 input 数组中出现的次数作为值
+$array = array(1, "hello", 1, "world", "hello");
+echo "<pre>";
+print_r(array_count_values($array));
+echo "</pre>";*/
+
+/*//array_diff_assoc ( array $array1 , array $array2 [, array $... ] )返回一个数组，该数组包括了所有在 array1 中但是不在任何其它参数数组中的值(其中只要键值或者值只要一个不同都算作不一样)。
+$array1 = array("a" => "green", "b" => "brown", "c" => "blue", "red");
+$array2 = array("a" => "green", "yellow", "red");
+$result = array_diff_assoc($array1, $array2);
+echo "<pre>";
+print_r($result);
+echo "</pre>";*/
+
+/*//array_diff_key ( array $array1 , array $array2 [, array $... ] )根据 array1 中的键名和 array2 进行比较，返回不同键名的项
+$array1 = array('blue'  => 1, 'red'  => 2, 'green'  => 3, 'purple' => 4);
+$array2 = array('green' => 5, 'blue' => 6, 'yellow' => 7, 'cyan'   => 8);
+echo "<pre>";
+var_dump(array_diff_key($array1, $array2));
+echo "</pre>";*/
+
+/*//array_diff_uassoc ( array $array1 , array $array2 [, array $... ], callable $key_compare_func )
+//对比了 array1 和 array2 并返回不同之处。 注意和 array_diff() 不同的是键名也用于比较。和 array_diff_assoc() 不同的是使用了用户自定义的回调函数，而不是内置的函数。
+//自定义函数的函数体一般不影响对结果的判断
+function key_compare_func($a, $b)
+{
+    if ($a === $b) {
+        return 0;
+    }
+    return ($a > $b)? 1:-1;
+}
+
+$array1 = array("a" => "green", "b" => "brown", "c" => "blue", "red");
+$array2 = array("a" => "green", "yellow", "red");
+$result = array_diff_uassoc($array1, $array2, "key_compare_func");
+echo "<pre>";
+print_r($result);
+echo "</pre>";*/
+
+/*//array_diff_ukey() 返回一个数组，该数组包括了所有出现在 array1 中但是未出现在任何其它参数数组中的键名的值。
+function key_compare_func($key1, $key2)
+{
+    if ($key1 == $key2)
+        return 0;
+    else if ($key1 > $key2)
+        return 1;
+    else
+        return -1;
+}
+
+$array1 = array('blue'  => 1, 'red'  => 2, 'green'  => 3, 'purple' => 4);
+$array2 = array('green' => 5, 'blue' => 6, 'yellow' => 7, 'cyan'   => 8);
+echo "<pre>";
+var_dump(array_diff_ukey($array1, $array2, 'key_compare_func'));
+echo "</pre>";*/
+
+/*//array_diff($array1,$array2[,])对比返回在array1中但不在array2中的值
+$a=array("a"=>"green","red","blue","red");
+$b=array("b"=>"green","yellow","red");
+$c=array_diff($a,$b);
+echo "<pre>";
+print_r($c);
+echo "</pre>";*/
+
+/*//array_fill_keys()用指定的键和值填充数组
+$a=array("foo",3,"tr");
+$b=array_fill_keys($a,"banane");
+echo "<pre>";
+print_r($b);
+echo "</pre>";
+
+$c=array("foo",3,"tr");
+$d=array("apple","pear","orange");
+$e=array_fill_keys($a,$d);
+echo "<pre>";
+print_r($e);
+echo "</pre>";*/
+
+/*//array_fill(起始索引值，数量，用来填充的值)用给定的一组值填充数组
+$a=array_fill(4,5,"cal");
+$b=array_fill(-2,6,"boom");
+printArr($a);
+printArr($b);*/
+
+/*//array_filter(要循环的数组，使用的回调函数)用回调函数过滤数组中的单元
+$a=array("a"=>1,"b"=>2,"c"=>3,"d"=>4,"e"=>5);
+$b=array(6,7,8,9,10,11,12);
+//奇数
+function odd($var)
+{
+    return($var & 1);
+}
+//偶数
+function even($var)
+{
+    return(!($var & 1));
+}
+$c=array_filter($a,"odd");
+echo "Odd:\n";
+printArr($c);
+$d=array_filter($b,"even");
+printArr($d);*/
+
+/*//array_flip ( array $trans )交换数组的键和值
+$a=array("id"=>1000,"name"=>"Nike");
+$b=array_flip($a);
+printArr($b);*/
+
+//

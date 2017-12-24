@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    单次首字母大写：{$str|capitalize}<br>
+    统计字符数：{$str|count_characters}<br>
+    统计字符数(包含空格)：{$str|count_characters:true}<br>
+    连接字符串：{$str|cat:$str2}<br>
+    连接字符串：{$str|cat:" smile face to life"}<br>
+    统计段数：{$paragraphs|count_paragraphs}<br>
+    句数统计：{$sentence|count_sentences}<br>
+    统计单词数：{$str2|count_words}
+    {$string|count_words}<br>
+    日期显示：{$smarty.now|date_format:"%Y-%m-%d"}<br/>
+    默认值：{$default|default:"no title"}<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;{$myTitle|default:"no title"}<br>
+    编码：用于html转码,url转码,在没有转码的变量上转换单引号,十六进制转码,十六进制美化,或者javascript转码。默认是html转码<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;{$articleTitle}<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;默认：{$articleTitle|escape}<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;HTML格式：{$articleTitle|escape:"html"} {* escapes & " ' < > *}<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;HTMLall格式：{$articleTitle|escape:"htmlall"} {* escapes ALL html entities *}<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;URL格式：{$articleTitle|escape:"url"}<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;网址的URL解析：{$add|escape:"url"}<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;引用格式：{$articleTitle|escape:"quotes"}<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;电子邮件：<a href='mailto:{$EmailAddress|escape:"hex"}'>{$EmailAddress|escape:"hexentity"}</a><br>
+    缩进：{$sentence|indent}<br>
+             {$sentence|indent:10}<br>
+             {$sentence|indent:1:"\t"}<br>
+    小写：{$str2|lower}<br>
+    大写：{$str|upper}<br>
+    换行符替换：{$paragraphs|nl2br}<br>
+    正则替换：{$sentence|regex_replace:"/[\r\t\n]/":" "}<br>
+    普通替换：{$sentence|replace:" ":"?"}<br>
+    插空：{$str|spacify:"^^"}<br>
+    字符串格式化：{$number|string_format:"%.2f"}<br>
+    {$number|string_format:"%d"}<br>
+    去除多余空格：{$sent|strip}<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sent|strip:" "}<br>
+    去除HTML标签：{$article|strip_tags}<br>
+    截取：{$paragraphs|truncate:30:"---"}<br>
+             {$paragraphs|truncate:30:"":true}<br>
+
+    行宽约束：
+    多个调节器共用：{$str|upper|spacify:"##"}<br>
+
+</body>
+</html>

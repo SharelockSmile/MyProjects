@@ -1,0 +1,49 @@
+<?php
+//开启会话，使变量可以跨页面使用。开启随机因子
+session_start();
+//声明要画画
+@header("content-type:image/png");
+//创建画布
+$img=imagecreate(100,50);
+//设置画布颜色
+$color=imagecolorallocate($img,rand(0,255),rand(0,255),rand(0,255));
+//绘制模糊作用的点
+for($i=0;$i<200;$i++)
+{
+    //模糊点颜色
+    $pix=imagecolorallocate($img,rand(0,255),rand(0,255),rand(0,255));
+    //画模糊点
+    imagesetpixel($img,mt_rand(1,99),mt_rand(1,49),$pix);
+}
+$codeLength=4;
+//创建随机验证码
+/*for($i=0;$i<$codeLength;$i++)
+{
+    $yzm.=chr(rand(97,122));
+}
+//设置字体样式
+$fontStyle=dirname(__FILE__).'/font/Pacifico.ttf';
+$_SESSION['code']=$yzm;*/
+$allStr="";
+for($j=0;$j<$codeLength;$j++)
+{
+    //字体颜色
+    $font=imagecolorallocate($img,rand(0,255),rand(0,255),rand(0,255));
+    //随机字母
+    $str=chr(rand(97,122));
+    imagestring($img,4,5+$j*23,3+rand(0,3)*10,$str,$font);
+    //将所有随机字母拼接
+    $allStr.=$str;
+}
+//标记会话变量，
+$_SESSION["code"]=$allStr;
+//输出图片
+imagepng($img);
+//释放内存
+imagedestroy($img);
+/**
+ * Created by PhpStorm.
+ * User: MM
+ * Date: 2017/4/8
+ * Time: 17:13
+ */

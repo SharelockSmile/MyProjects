@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<script type="text/javascript" src="/phpTest/0805TP5/thinkphp5/public/static/Js/processLogin.js"></script>-->
+    <script type="text/javascript" src="__STATIC__/Js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="__STATIC__/Js/processLogin.js"></script>
+    <title>Login</title>
+</head>
+<body>
+<form name="loginForm">
+    <table>
+        <tr>
+            <td>帐号：</td>
+            <td><input type="text" name="pno"></td>
+            <td><span id="msg1"></span></td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td><input type="password" name="pwd"></td>
+            <td><a href="#">忘记密码</a></td>
+            <td><span id="msg2"></span></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="登录" onclick="return sub()"></td>
+            <td><a href="#">暂无账号，注册</a></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
